@@ -1,0 +1,31 @@
+<!Doctype html>
+<html ng-app>
+<head>
+<!-- framework from cdn -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+
+
+<script type="text/javascript">
+  // get data from json to controller
+	function movieController($http,$scope){
+        $http.get('movies.json').success(function(movies) {
+    				$scope.data = movies;
+                               
+  		});
+	}	
+</script>
+
+</head>
+<body>
+<!-- display data with ng-repeat -->
+<div ng-controller="movieController">
+	<ul>	
+		<li ng-repeat="d in data">
+        <h2>{{d.title}}</h2>
+        <time>{{d.year}}</time>
+        <small>{{d.category}}</small>
+		</li>
+	</ul>
+</div>
+</body>
+</html>
